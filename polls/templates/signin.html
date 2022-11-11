@@ -1,0 +1,22 @@
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-4">
+            <form method="POST" class="card card-body">
+                {% csrf_token %}
+                <h1 class="text-center">Signin</h1>
+                <small class="text-danger">{{ error }}</small>
+                <div class="md-3">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Write a username">
+                </div>
+                <div class="md-3">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Write a password">
+                </div>
+                {% comment %} {{ form.as_p }} {% endcomment %}
+                <button class="btn btn-primary">signin</button>
+                <small class="text-muted" ><a href="{% url 'signup' %}">you have an account?</a></small>
+            </form>
+        </div>
+    </div>
+</main>
