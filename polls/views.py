@@ -7,25 +7,31 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+import os
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 @login_required
 def index(request):
-    date = datetime.today().strftime('%Y-%m-%d')
+    date_today = datetime.today().strftime('%Y-%m-%d')
     try:
 
-        priority_today = Priorities.objects.get(date=date)
-        priority = Priorities.objects.exclude(date=date)
+        priority_today = Priorities.objects.get(date=date_today)
+        priority = Priorities.objects.exclude(date=date_today)
 
         return render(request, 'index.html',{'priorities_today': priority_today, 'priorities': priority})
         
     except:
         view_urls = ['dvd8-11485', 'dvd8-11525','dvd8-11545' ,'dvd8-11565']
-        i = priorities(view_urls, {"Authorization": 'pk_49588273_8NHVFF6AVGYL1SW3OH9K6WWDFUGMK4H7' })
-        x = Priorities(date=date, urgent_count=i.get('urgent_count'), urgent_time=i.get('urgent_time'), high_count=i.get('high_count'), high_time=i.get('high_time'), normal_count=i.get('normal_count'), normal_time=i.get('normal_time'), low_count=i.get('low_count'), low_time=i.get('low_time'))
-
+        i = priorities(view_urls, {"Authorization": os.environ.get('Authorization') })
+        x = Priorities(date=date_today, urgent_count=i.get('urgent_count'), urgent_time=i.get('urgent_time'), high_count=i.get('high_count'), high_time=i.get('high_time'), normal_count=i.get('normal_count'), normal_time=i.get('normal_time'), low_count=i.get('low_count'), low_time=i.get('low_time'))
         x.save()
-        priority = Priorities.objects.get(date=date)
+        
+        priority_today = Priorities.objects.get(date=date_today)
+        priority = Priorities.objects.exclude(date=date_today)
         return render(request, 'index.html',{'priorities_today': priority_today, 'priorities': priority})
 
 

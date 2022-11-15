@@ -1,28 +1,37 @@
-<ul>
-    <li>{{ priorities_today.date }}</li>
-    <li>{{ priorities_today.urgent_count }}</li>
-    <li>{{ priorities_today.urgent_time }}</li>
-    <li>{{ priorities_today.high_count }}</li>
-    <li>{{ priorities_today.high_time }}</li>
-    <li>{{ priorities_today.normal_count }}</li>
-    <li>{{ priorities_today.normal_time }}</li>
-    <li>{{ priorities_today.low_count }}</li>
-    <li>{{ priorities_today.low_time }}</li>
-</ul>
+{% extends 'base.html' %}
 
-{% for priority in priorities%}
+{% block content %}
+   
+    <table class="table table-borderless">
+        <ul>
+            <li>{{ priorities_today.date }}</li>
+            <li>{{ priorities_today.urgent_count }}</li>
+            <li>{{ priorities_today.urgent_time }}</li>
+            <li>{{ priorities_today.high_count }}</li>
+            <li>{{ priorities_today.high_time }}</li>
+            <li>{{ priorities_today.normal_count }}</li>
+            <li>{{ priorities_today.normal_time }}</li>
+            <li>{{ priorities_today.low_count }}</li>
+            <li>{{ priorities_today.low_time }}</li>
+        </ul>
+    </table>
+    
 
-    <ul>
-        <li>{{ priority.date }}</li>
-        <li>{{ priority.urgent_count }}</li>
-        <li>{{ priority.urgent_time }}</li>
-        <li>{{ priority.high_count }}</li>
-        <li>{{ priority.high_time }}</li>
-        <li>{{ priority.normal_count }}</li>
-        <li>{{ priority.normal_time }}</li>
-        <li>{{ priority.low_count }}</li>
-        <li>{{ priority.low_time }}</li>
-    </ul>
+    {% for priority in priorities%}
 
-{% endfor %}
+        <ul>
+            <li>{{ priority.date }}</li>
+            <li>{{ priority.urgent_count }}</li>
+            <li>{{ priority.urgent_time }}</li>
+            <li>{{ priority.high_count }}</li>
+            <li>{{ priority.high_time }}</li>
+            <li>{{ priority.normal_count }}</li>
+            <li>{{ priority.normal_time }}</li>
+            <li>{{ priority.low_count }}</li>
+            <li>{{ priority.low_time }}</li>
+        </ul>
+
+    {% endfor %}
+
+{% endblock %}
 

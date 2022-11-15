@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,30 +20,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+            
                     {% if user.is_authenticated %}
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url '' %}">Tasks</a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tasks_completed' %}">Tasks Completed</a>
-                    </li>
+                        <a class="nav-link" href="{% url 'index' %}">Index</a>
+                    </li> 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create_tasks' %}">Create Tasks</a>
-                    </li> -->
-                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log out</a>
-                    </li> -->
+                    </li> 
                     {% else %}
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signin' %}">Signin</a>
-                    </li> -->
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'signup' %}">Singup</a>
-                    </li> -->
-                    <!-- {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'signin' %}">Signin</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -53,4 +45,4 @@
 
     {% endblock  %}
 </body> 
-</html> -->
+</html>
